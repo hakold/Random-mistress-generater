@@ -1,26 +1,46 @@
 const PI = 3.14159;
 
 function startGenerator() {
-    generateBody();
-    generateAge();
-    generateHair();
-    generateEyes();
-    generateAttribute();
-    generateCharacter();
-    generateCup();
-    generateSkin();
+	var sexnum = Math.round(Math.random());
+	switch(sexnum){
+		case 0:
+			//没xiong有dio
+			generateBody();
+			generateAge();
+			generateEyes();
+			generateSkin();
+			generateManHair();
+			generateManAttribute();
+			generateManCharacter();
+			generateManDio();
+			document.getElementById("sex").innerHTML = "男性";
+			document.getElementById("cupsizeText").innerHTML = "dio长(cm?)";
+			generateDerail();
+			break;
+		case 1:
+			//有xiong没dio
+		    generateBody();
+			generateAge();
+			generateSkin();
+			generateEyes();
+			generateLadyAttribute();
+			generateLadyCharacter();
+			generateLadyHair();
+			generateCup();
+			document.getElementById("cupsizeText").innerHTML = "CUP";
+			document.getElementById("sex").innerHTML = "女性";
+			generateDerail();
+			break;
+	}
 }
 
-function generateCup() {
-    randomData("cupsize",Cupsize_data);
-}
-
+//男、女性肤色
 function generateSkin() {
     randomData("skin",Skin_data);
 }
-
+//男、女性身材
 function generateBody() {
-    var height = normalDistribution(165, 5)
+    var height = normalDistribution(170, 10)
     height = Math.round(height);
     var text1 = document.getElementById("height");
     text1.innerHTML=height;
@@ -29,31 +49,66 @@ function generateBody() {
     var text2 = document.getElementById("weight");
     text2.innerHTML = weight;
 }
+//男、女性年龄
 function generateAge() {
-    var gH = Math.round(normalDistribution(20, 2));
+    var gH = Math.round(normalDistribution(23, 2));
     var text1 = document.getElementById("age");
     text1.innerHTML = gH;    
 }
-function generateHair() {
-    randomData("hairstyle",Hair_data);
-    var newColor = randomRGB();
-    var text2 = document.getElementById("hairColor");
-    text2.innerHTML = newColor;
-    text2.style.backgroundColor = newColor;
-}
+
+//男、女性瞳色
 function generateEyes() {
     var text1 = document.getElementById("eyeColor");
     var newColor = randomRGB();
     text1.innerHTML = newColor;
     text1.style.backgroundColor = newColor;
 }
-function generateAttribute() {
-    randomData("attribute",Attribute_data);
+//男、女性出轨原因
+function generateDerail() {
+    randomData("derail",Derail_data);
 }
-function generateCharacter() {  
-    randomData("character",Character_data);
+//女性属性
+function generateLadyAttribute() {
+    randomData("attribute",Lady_Attribute_data);
 }
-
+//女性性格
+function generateLadyCharacter() {  
+    randomData("character",Lady_Character_data);
+}
+//女性发型
+function generateLadyHair() {
+    randomData("hairstyle",Lady_Hair_data);
+    var newColor = randomRGB();
+    var text2 = document.getElementById("hairColor");
+    text2.innerHTML = newColor;
+    text2.style.backgroundColor = newColor;
+}
+//女性cup
+function generateCup() {
+    randomData("cupsize",Cupsize_data);
+}
+//男性性格
+function generateManCharacter() {  
+    randomData("character",Man_Character_data);
+}
+//男性属性
+function generateManAttribute() {  
+    randomData("attribute",Man_Attribute_data);
+}
+//男性发型
+function generateManHair() {  
+	randomData("hairstyle",Man_Hair_data);
+    var newColor = randomRGB();
+    var text2 = document.getElementById("hairColor");
+    text2.innerHTML = newColor;
+    text2.style.backgroundColor = newColor;
+}
+//男性dio长
+function generateManDio() {  
+    var DioLong = Math.round(normalDistribution(10, 5));
+    var text1 = document.getElementById("cupsize");
+    text1.innerHTML = DioLong;    
+}
 function normalDistribution(u, v) {
     // Box-Muller
     var x1 = Math.random();
