@@ -136,7 +136,9 @@ Man_Attribute_data = [
     	"杀人狂",
     	"科学家",
     	"伪娘",
-    	"警察"
+    	"警察",
+	"程序员",
+	"基佬"
 ];
 Man_Character_data = [
 	"运动达人",
