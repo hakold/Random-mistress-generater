@@ -1,7 +1,8 @@
 # ---  小三生成器Random mistress generator ---
 原作者 老婆生成器：
 [网址](https://reed-chan.github.io/Random-waifu-generater/) 
-
+师兄在原作者基础上 魔改的老公生成器：
+[网址](https://github.com/YSilver/Random-waifu-generater/) 
 魔改 小三生成器：
 [网址](https://www.tampular.studio/Random-waifu-generater/) 
 
@@ -13,3 +14,5 @@
 如生成器开头直接区分男性与女性的生成内容  
 利用比较低级的方法区分男和女的性格、属性、发型等  
 利用原作者的伪随机数进行dio长模拟  
+  
+感谢原作者reed-chan的创意
