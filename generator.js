@@ -105,7 +105,7 @@ function generateManHair() {
 }
 //男性dio长
 function generateManDio() {  
-    var DioLong = Math.round(normalDistribution(10, 5));
+    var DioLong = Math.round(normalDistribution(15, 3));
     var text1 = document.getElementById("cupsize");
     text1.innerHTML = DioLong;    
 }
