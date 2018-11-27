@@ -1,11 +1,12 @@
 const PI = 3.14159;
 
 function startGenerator() {
+	showEx()
 	var sexnum = Math.round(Math.random());
 	switch(sexnum){
 		case 0:
 			//没xiong有dio
-			generateBody();
+			generateManBody();
 			generateAge();
 			generateEyes();
 			generateSkin();
@@ -15,11 +16,11 @@ function startGenerator() {
 			generateManDio();
 			document.getElementById("sex").innerHTML = "男性";
 			document.getElementById("cupsizeText").innerHTML = "dio长(cm?)";
-			generateDerail();
+			generateManDerail();generateManPhoto();
 			break;
 		case 1:
 			//有xiong没dio
-		    generateBody();
+		    generateLadyBody();
 			generateAge();
 			generateSkin();
 			generateEyes();
@@ -29,7 +30,8 @@ function startGenerator() {
 			generateCup();
 			document.getElementById("cupsizeText").innerHTML = "CUP";
 			document.getElementById("sex").innerHTML = "女性";
-			generateDerail();
+			generateLadyDerail();
+			generateLadyPhoto()
 			break;
 	}
 }
@@ -37,17 +39,6 @@ function startGenerator() {
 //男、女性肤色
 function generateSkin() {
     randomData("skin",Skin_data);
-}
-//男、女性身材
-function generateBody() {
-    var height = normalDistribution(170, 10)
-    height = Math.round(height);
-    var text1 = document.getElementById("height");
-    text1.innerHTML=height;
-    var bmi = normalDistribution(20, 1);
-    var weight = Math.round(bmi*(height/100)*(height/100));
-    var text2 = document.getElementById("weight");
-    text2.innerHTML = weight;
 }
 //男、女性年龄
 function generateAge() {
@@ -63,9 +54,20 @@ function generateEyes() {
     text1.innerHTML = newColor;
     text1.style.backgroundColor = newColor;
 }
-//男、女性出轨原因
-function generateDerail() {
-    randomData("derail",Derail_data);
+//女性身材
+function generateLadyBody() {
+    var height = normalDistribution(160, 10)
+    height = Math.round(height);
+    var text1 = document.getElementById("height");
+    text1.innerHTML=height;
+    var bmi = normalDistribution(20, 1);
+    var weight = Math.round(bmi*(height/100)*(height/100));
+    var text2 = document.getElementById("weight");
+    text2.innerHTML = weight;
+}
+//女性出轨原因
+function generateLadyDerail() {
+    randomData("derail",Lady_Derail_data);
 }
 //女性属性
 function generateLadyAttribute() {
@@ -87,6 +89,38 @@ function generateLadyHair() {
 function generateCup() {
     randomData("cupsize",Cupsize_data);
 }
+//女性照片
+function generateLadyPhoto() {
+	var btn = document.getElementsByTagName("input")[0];
+	var img = document.getElementsByTagName("img")[0];
+	var imgnum = Math.round(Math.random()*10)
+	srclink = "images/lady/" + String(imgnum) + ".jpg"
+	img.src = srclink;
+	btn.onclick = function () {
+                if (btn.value == "显示"){
+                    btn.value = "隐藏";
+                    img.style.display = "block";
+                }else {
+                    btn.value = "显示";
+                    img.style.display = "none";
+                }
+            }
+}
+function showEx(){
+	var tr = document.getElementsByTagName("tr")[13];
+	tr.style.display = "block";
+}
+//男性身材
+function generateManBody() {
+    var height = normalDistribution(170, 10)
+    height = Math.round(height);
+    var text1 = document.getElementById("height");
+    text1.innerHTML=height;
+    var bmi = normalDistribution(20, 1);
+    var weight = Math.round(bmi*(height/100)*(height/100));
+    var text2 = document.getElementById("weight");
+    text2.innerHTML = weight;
+}
 //男性性格
 function generateManCharacter() {  
     randomData("character",Man_Character_data);
@@ -105,9 +139,35 @@ function generateManHair() {
 }
 //男性dio长
 function generateManDio() {  
-    var DioLong = Math.round(normalDistribution(12, 3));
+    var DioLong = Math.round(normalDistribution(11, 3));
     var text1 = document.getElementById("cupsize");
     text1.innerHTML = DioLong;    
+}
+//男性出轨原因
+function generateManDerail() {
+    randomData("derail",Man_Derail_data);
+}
+//男性照片
+function generateManPhoto() {
+	var btn = document.getElementsByTagName("input")[0];
+	var img = document.getElementsByTagName("img")[0];
+	var imgnum = Math.round(Math.random()*10)
+	srclink = "images/man/" + String(imgnum) + ".jpg"
+	img.src = srclink;
+	btn.onclick = function () {
+                if (btn.value == "显示"){
+                    btn.value = "隐藏";
+                    img.style.display = "block";
+                }else {
+                    btn.value = "显示";
+                    img.style.display = "none";
+                }
+            }
+}
+function showExList(){
+	var x = (window.screen.availHeight-500)/2
+	var y = (window.screen.availWidth-500)/2
+	window.open("list.html","小三列表","width="+1000+",height="+700+",status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,center:=yes,top="+x+",left="+y); 
 }
 function normalDistribution(u, v) {
     // Box-Muller

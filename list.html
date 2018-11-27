@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="data.js"></script>
+	<title>小三生成器的前任列表 Random mistress generator EX list</title>
+    
+    <!-- 优化一下移动端展示效果 -->
+    <!-- https://www.bootstrapcdn.com/ -->
+    <link rel="stylesheet" href="plugins/bootstrap/4.1.3/css/bootstrap.min.css" />
+	<script>
+		const PI = 3.14159;
+		window.onload = function(){
+			generatemistress()
+		}
+		function generatemistress(){
+			generatename()
+			sexrandom()
+			generateBody()
+			generateAge()
+		}
+		function sexrandom() {
+			var sexnum = Math.round(Math.random());
+			switch(sexnum){
+			case 0:
+				document.getElementById("sex").innerHTML = "男性";
+				break;
+			case 1:
+				document.getElementById("sex").innerHTML = "女性";
+				break;
+			}
+		}
+		function generatename() {
+			randomData("name",name_data);
+		}
+		function generateBody() {
+			var height = normalDistribution(165, 5)
+			height = Math.round(height);
+			var text1 = document.getElementById("height");
+			text1.innerHTML=height;
+			var bmi = normalDistribution(20, 1);
+			var weight = Math.round(bmi*(height/100)*(height/100));
+			var text2 = document.getElementById("weight");
+			text2.innerHTML = weight;
+		}
+		function generateAge() {
+			var gH = Math.round(normalDistribution(23, 2));
+			var text1 = document.getElementById("age");
+			text1.innerHTML = gH;    
+		}
+		function randomData(elementId,dataName) {
+			var t1Num = Math.floor(Math.random()*dataName.length);
+			var text1 = document.getElementById(elementId);
+			text1.innerHTML = dataName[t1Num];    
+		}
+		function normalDistribution(u, v) {
+		var x1 = Math.random();
+		var x2 = Math.random();
+		var nD = Math.sqrt(-2*Math.log(x1))*Math.sin(2*PI*x2)*v+u;
+		return nD;
+		}
+		
+	</script>
+</head>
+<body class="container">
+	<h1 style="margin:30px 0px 10px 0px;">小三生成器的前任列表</h1>
+	<table class="table table-hover">
+		<tr>
+			<td>名字</td>
+			<td>身高</td>
+			<td>体重</td>
+			<td>年龄</td>
+			<td>性别</td>
+		</tr>
+		<tr>
+			<td id="name">--</td>
+			<td id="height">--</td>
+			<td id="weight">--</td>
+			<td id="age">--</td>
+			<td id="sex">--</td>
+		</tr>
+
+		
+						
+	</table>
+   
+	<div class="form-group" style="text-align:right;">
+        <a href="https://adnmb1.com/t/15788691">原作者的讨论地址</a></br>
+	    <a href="https://github.com/reed-chan/Random-waifu-generater">原作者的源码Gayhub</a></br>
+	    <a href="https://reed-chan.github.io/Random-waifu-generater/">老婆生成器</a></br>
+	    <a href="https://ysilver.github.io/Random-waifu-generater/">老公生成器</a></br>
+		<a href="https://github.com/hakold/Random-waifu-generater">本魔改的Github</a></br>
+    </div>
+</body>
+</html>
